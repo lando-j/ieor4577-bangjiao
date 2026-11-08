@@ -1,0 +1,8 @@
+__pycache__/
+venv/
+*.npy
+*.csv
+runs/
+CASE.md
+ONEPAGER_DRAFT.md
+.DS_Store
