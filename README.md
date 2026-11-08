@@ -1,4 +1,7 @@
-# IEOR 4577 — movie recommendation harness
+# ieor4577-bangjiao
+Bang Jiao's work on IEOR 4577
+
+## Movie recommendation harness
 
 Course task: rank all 20,720 movies for 10,000 dev users; metric Recall@20 on the held-out 20%
 (full catalog, no sampled negatives). Data files are provided by the course and are **not** in this repo.
