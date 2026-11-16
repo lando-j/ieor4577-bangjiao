@@ -26,8 +26,9 @@ ap.add_argument("--seed", type=int, default=0)
 ap.add_argument("--save_scores", action="store_true", help="save dev score matrix (float16) for ensembling")
 a = ap.parse_args()
 torch.manual_seed(a.seed); rng = np.random.default_rng(a.seed)
-dev_ = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
-OUT = "/Users/landojiao/Downloads/ieor4577-student-dataset/experiments/runs/"
+dev_ = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
+print("device:", dev_, flush=True)
+import os; OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs") + "/"
 import os; os.makedirs(OUT, exist_ok=True)
 
 X, uids, iids, dev, dev_rows, lab, n_lab = load()
