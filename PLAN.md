@@ -24,3 +24,9 @@
 - 只能用 interactions.csv 训练,不能用外部数据或预训练向量
 - 评分必须对全目录排序,不能用采样负例
 - 最终成绩是另一批 1 万个未见用户
+
+## 下一步补充(2026-11-08)
+- RecVAE:论文 references/papers/Week1/RecVAE 2020.pdf,官方代码 https://github.com/ilya-shenbin/RecVAE (尚未阅读)。
+  先读论文和代码,再把复合先验、β 随用户交互数缩放、编码器/解码器交替训练移植到 vae.py。
+- Mult-VAE 对照:按论文设置重跑(200 轮,KL 在 200,000 次更新上线性退火,β 上限 0.2),看是否优于首版。
+- 评估口径:见 NOTES.md。报告时同时给出课程口径和论文口径(metric_check.py)。
