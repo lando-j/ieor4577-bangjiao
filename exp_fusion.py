@@ -53,6 +53,9 @@ d = cf - R[ws.index(0.0)]
 print(f"cross-fitted blend {cf.mean():.4f} vs EASE alone {R[ws.index(0.0)].mean():.4f}: {d.mean():+.4f} ± {d.std()/np.sqrt(len(d)):.4f}")
 d2 = R[ws.index(0.5)] - R[ws.index(0.0)]; print(f"w=0.5 vs EASE: {d2.mean():+.4f} ± {d2.std()/np.sqrt(len(d2)):.4f}")
 d3 = R[ws.index(0.5)] - R[ws.index(1.0)]; print(f"w=0.5 vs VAE:  {d3.mean():+.4f} ± {d3.std()/np.sqrt(len(d3)):.4f}")
+for name, a_ in [("VAE alone", R[ws.index(1.0)]), ("cross-fitted blend", cf)]:
+    m, lo, hi = paired_bootstrap(a_, R[ws.index(0.0)]); print(f"bootstrap {name} vs EASE: {m:+.4f} [95% CI {lo:+.4f}, {hi:+.4f}]")
+m, lo, hi = paired_bootstrap(cf, R[ws.index(1.0)]); print(f"bootstrap blend vs VAE alone: {m:+.4f} [95% CI {lo:+.4f}, {hi:+.4f}]")
 
 wb = ws[int(np.argmax(R.mean(1)))]
 for w in sorted({0.0, 1.0, 0.5, wb}):
